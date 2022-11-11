@@ -17,11 +17,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/itemListFragment">
+    app:startDestination="@id/userLogInFragment">
 
     <fragment
         android:id="@+id/itemListFragment"
-        android:name="com.example.inventory.ItemListFragment"
+        android:name="com.example.inventory.Item.ItemListFragment"
         android:label="@string/app_name"
         tools:layout="@layout/item_list_fragment">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
-        android:name="com.example.inventory.ItemDetailFragment"
+        android:name="com.example.inventory.Item.ItemDetailFragment"
         android:label="@string/item_detail_fragment_title"
         tools:layout="@layout/fragment_item_detail">
         <argument
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/addItemFragment"
-        android:name="com.example.inventory.AddItemFragment"
+        android:name="com.example.inventory.Item.AddItemFragment"
         android:label="{title}"
         tools:layout="@layout/fragment_add_item">
         <argument
@@ -60,5 +60,14 @@
             app:destination="@id/itemListFragment"
             app:popUpTo="@id/itemListFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userLogInFragment"
+        android:name="com.example.inventory.user.UserLogInFragment"
+        android:label="fragment_user_log_in"
+        tools:layout="@layout/fragment_user_log_in" >
+        <action
+            android:id="@+id/action_userLogInFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
     </fragment>
 </navigation>
