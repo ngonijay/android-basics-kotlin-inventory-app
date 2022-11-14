@@ -1,16 +1,14 @@
 package com.example.inventory.user
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.inventory.InventoryApplication
-import com.example.inventory.R
 import com.example.inventory.databinding.FragmentRegisterUserBinding
-import com.example.inventory.databinding.FragmentUserLogInBinding
 
 
 /**
@@ -68,11 +66,16 @@ class RegisterUserFragment : Fragment() {
             signUp(phoneNumber, password)
         }
 
+        binding.signInBtn.setOnClickListener {
+            val action = RegisterUserFragmentDirections.actionRegisterUserFragmentToUserLogInFragment()
+            this.findNavController().navigate(action)
+        }
+
     }
 
     private fun signUp( userPhoneNumber:String , userPassword:String) {
         viewModel.addNewUser(userPhoneNumber,userPassword)
-        val action = UserLogInFragmentDirections.actionUserLogInFragmentToItemListFragment()
+        val action = RegisterUserFragmentDirections.actionRegisterUserFragmentToItemListFragment()
         this.findNavController().navigate(action)
 
     }

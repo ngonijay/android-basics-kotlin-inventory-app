@@ -1,8 +1,6 @@
 package com.example.inventory.user
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.inventory.data.Item
 import com.example.inventory.data.User
 import com.example.inventory.data.UserDao
@@ -12,6 +10,11 @@ class UserViewModel (private val userDto:UserDao): ViewModel() {
     /**
      * Inserts the new User into database.
      */
+
+    fun getUserDetails(userPhoneNUmber: String, userPassword: String) : LiveData<User>{
+        return   userDto.getUserDetailsByPhoneNumber(userPhoneNUmber, userPassword).asLiveData()
+    }
+
     fun addNewUser(userPhoneNUmber: String, userPassword: String) {
         val newUser = getNewUserEntry(userPhoneNUmber, userPassword)
         insertUser(newUser)
