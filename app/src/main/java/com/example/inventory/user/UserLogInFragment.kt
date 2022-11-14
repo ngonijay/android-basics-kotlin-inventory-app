@@ -46,13 +46,18 @@ class UserLogInFragment : Fragment() {
 
     private fun viewInit() {
 
-        binding.signBtn.setOnClickListener {
+        binding.signInBtn.setOnClickListener {
 
             val phoneNumber = _binding?.userPhoneNumberTxt?.text.toString()
             val password = _binding?.userPasswordTxt?.text.toString()
 
             signIn(phoneNumber, password)
          }
+
+        binding.signUpBtn.setOnClickListener{
+            val action = UserLogInFragmentDirections.actionUserLogInFragmentToRegisterUserFragment()
+            this.findNavController().navigate(action)
+        }
     }
 
     private fun signIn( userPhoneNumber:String , userPassword:String) {
